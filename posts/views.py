@@ -3,6 +3,12 @@ from django.shortcuts import render,redirect
 # Create your views here.
 from django.http  import HttpResponse
 from .forms import SignupForm
+
+def home(request):
+    images = Image.get_all_images()
+    
+    return render(request, 'index.html', {'images':images})
+
 def signup(request):
     if request.user.is_authenticated():
         return redirect('home')
