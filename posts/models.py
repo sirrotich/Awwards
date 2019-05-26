@@ -1,11 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 # Create your models here.
 class Profile(models.Model):
     # profile_photo = models.ImageField(upload_to = 'profilepics/', default='Image')
-    # prof_pic = ImageField(blank=True, manual_crop='800x800')
-    # bio = HTMLField()
-    # user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+    prof_pic = ImageField(blank=True, manual_crop='800x800')
+    bio = HTMLField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
     def save_profile(self):
         self.save()
