@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import SignupForm, ImageForm, ProfileForm, CommentForm
 from .models import Image, Profile, Comments
 
-@login_required(login_url='/')
 def home(request):
     images = Image.get_all_images()
     
