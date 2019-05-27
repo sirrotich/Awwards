@@ -9,9 +9,12 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm, ImageForm, ProfileForm, CommentForm
+from .forms import SignupForm, ImageForm, ProfileForm, CommentForm, NewProjectForm
 from .models import Image, Profile, Comments
+from django.contrib import messages
 
+
+@login_required(login_url='/')
 def home(request):
     images = Image.get_all_images()
     
@@ -47,7 +50,7 @@ def profile(request, username):
 
     return render(request, 'profile/profile.html', {'title':title, 'profile':profile, 'profile_details':profile_details, 'images':images})
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def upload_image(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -79,3 +82,33 @@ def single_image(request, image_id):
         form = CommentForm()
         
     return render(request, 'image.html', {'image':image, 'form':form, 'comments':comments})
+
+def search(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search')
+        profiles = Profile.search_profile(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'search.html',{'message':message, 'profiles':profiles})
+    else:
+        message = 'Enter term to search'
+        return render(request, 'search.html', {'message':message})
+
+
+def new_post(request):
+    current_user=request.user
+    if request.method=='POST':
+        np_form=NewProjectForm(request.POST, request.FILES)
+        if np_form.is_valid():
+            post=np_form.save(commit=False)
+            post.user=current_user
+            np_form.save()
+            messages.success(request, f'Post Made Successfully!')
+        return redirect('new-post')
+    else:
+        np_form=NewProjectForm(instance=request.user)
+        
+    context={
+        'np_form' : np_form,
+    }
+    return render(request, 'new-project.html', context)

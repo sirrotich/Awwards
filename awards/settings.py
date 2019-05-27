@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 UPLOADCARE = {
     'pub_key': config('pub_key'),
     'secret': config('secret'),
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'bootstrap4',
     'tinymce',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -86,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'awaards',
         'USER': 'kipngeno',
-    'PASSWORD':'1234',
+        'PASSWORD':'1234',
     }
 }
 # Password validation
@@ -133,3 +136,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

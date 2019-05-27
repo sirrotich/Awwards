@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 from .models import Image, Profile, Comments
 from pyuploadcare.dj.forms import FileWidget
 from pyuploadcare.dj.models import ImageField
+from .models import Image
+
+
+
+
+
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text = 'Required')
 
@@ -29,3 +35,11 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         exclude = ['image', 'user']
+
+class NewProjectForm(forms.ModelForm):
+    
+    class Meta:
+        model=Image
+        fields=['photo', 'image_name', 'image_caption', 'profile']
+      
+

@@ -1,2 +1,17 @@
+certifi==2019.3.9
+chardet==3.0.4
+config==0.4.2
+confusable-homoglyphs==3.2.0
 Django==1.11
+django-bootstrap4==0.0.8
+django-decouple==2.1
+django-registration==2.4
+django-tinymce==2.8.0
+idna==2.8
+psycopg2==2.8.2
+python-dateutil==2.8.0
 pytz==2019.1
+pyuploadcare==2.6.0
+requests==2.22.0
+six==1.12.0
+urllib3==1.25.3
