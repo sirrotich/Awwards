@@ -67,7 +67,7 @@ UPLOADCARE = {
 
 INSTALLED_APPS = [
     'pyuploadcare.dj',
-    'chats.apps.ChatsConfig',
+    'awards.apps.AwardsConfig',
     'tinymce',
     'bootstrap4',
     'django.contrib.admin',
