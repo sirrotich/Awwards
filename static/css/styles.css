@@ -9,8 +9,8 @@ body {
     /* text-transform: uppercase; */
     background: rgb(255, 255, 255);
 }
-.row-info {
-    background: url('static/img/award.png');
+#info {
+    background-image: url('../img/award.png');
 }
 #navMain .navbar-toggler {
     font-size: 16px;
