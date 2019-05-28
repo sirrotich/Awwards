@@ -67,7 +67,7 @@ UPLOADCARE = {
 
 INSTALLED_APPS = [
     'pyuploadcare.dj',
-    'awards.apps.AwardsConfig',
+    'posts.apps.PostsConfig',
     'tinymce',
     'bootstrap4',
     'django.contrib.admin',
