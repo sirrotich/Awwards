@@ -58,8 +58,6 @@ DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-ALLOWED_HOSTS = []
-
 
 UPLOADCARE = {
     'pub_key': config('pub_key'),
